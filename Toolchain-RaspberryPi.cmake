@@ -1,0 +1,22 @@
+set(CMAKE_SYSTEM_NAME Linux)
+set(CMAKE_SYSTEM_VERSION 1)
+set(CMAKE_SYSTEM_PROCESSOR arm)
+
+set(target arm-linux-gnueabihf)
+
+set(CMAKE_SYSROOT $ENV{HOME}/sysroot)
+set(CMAKE_INCLUDE_PATH ${CMAKE_SYSROOT}/usr/include)
+
+if (NOT DEFINED CMAKE_C_COMPILER)
+  set(CMAKE_C_COMPILER "/usr/bin/clang")
+endif (NOT DEFINED CMAKE_C_COMPILER)
+
+set(CMAKE_C_COMPILER_TARGET ${target})
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -isysroot=${CMAKE_SYSROOT}")
+
+if (NOT DEFINED CMAKE_CXX_COMPILER)
+  set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
+endif (NOT DEFINED CMAKE_CXX_COMPILER)
+
+set(CMAKE_CXX_COMPILER_TARGET ${target})
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -isysroot=${CMAKE_SYSROOT}")
